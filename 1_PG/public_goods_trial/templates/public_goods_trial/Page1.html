@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    説明＆貢献額の決定
+{% endblock %}
+{% block content %}
+<p>
+    これは{{ Constants.players_per_group }} 人プレイヤーによる公共財ゲームです．<br>
+    初期保有額は{{ Constants.endowment }}であり，係数は{{ Constants.multiplier }}です．<br>
+    {{ Constants.players_per_group }} 人の貢献額の合計を{{ Constants.multiplier }}倍したポイントを{{ Constants.players_per_group }}で割ったものが一人ひとりに返されます．
+</p>
+{% formfields player.contribution %}
+    {% next_button %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    結果の確認
+{% endblock %}
+
+{% block content %}
+<p>
+    あなたは初期保有額として<strong> {{ Constants.endowment }}</strong>を持っていました．<br>
+    {% if player.contribution == 0 %}
+    あなたは協力しませんでした．
+    {% else %}
+    あなたは協力しました．
+    {% endif %}
+
+    あなたのグループでは全員で<strong>{{ group.N_of_Contribution }}人が貢献をして，{{ group.N_of_NoContribution }}人が貢献をしませんでした．</strong><br>
+    その結果，一人あたりには<strong>{{ group.individual_share }}</strong>が渡されました．<br>
+</p>
+<p>
+    <strong>{{ Constants.endowment }}-{{ player.contribution }}+{{ group.individual_share }}={{ player.payoff }}</strong>
+</p>
+<p>
+    したがって，あなたは<strong>{{ player.payoff }}</strong>を受け取りました．
+</p>
+    {% next_button %}
+{% endblock %}
