@@ -105,7 +105,7 @@ class Group(BaseGroup):
 
 ### 1ページ目
 
-```
+```html
 {% block title %}
     説明＆貢献額の決定
 {% endblock %}
@@ -130,7 +130,7 @@ class Group(BaseGroup):
 * 慌てない．
 
 ### 3ページ目
-```
+```html
 {% block title %}
     結果の確認
 {% endblock %}

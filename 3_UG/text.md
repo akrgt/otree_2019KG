@@ -120,7 +120,7 @@ class Group(BaseGroup):
 
 
 ### 1ページ目
-```
+```html
 {% block title %}
     説明
 {% endblock %}
@@ -152,7 +152,7 @@ class Group(BaseGroup):
 
 
 ### 2ページ目
-```
+```html
 {% extends "global/Page.html" %}
 {% load otree static %}
 
@@ -200,9 +200,7 @@ class Group(BaseGroup):
 * 慌てない
 
 ### 6ページ目
-```
-
-
+```html
 {% block title %}
     結果の確認
 {% endblock %}

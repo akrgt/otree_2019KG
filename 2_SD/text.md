@@ -115,7 +115,8 @@ individual_share = models.CurrencyField() #全員に分配される金額（合�
 
 
 ### 1ページ目
-```
+
+```html
 {% block title %}
     説明＆貢献額の決定
 {% endblock %}
@@ -142,10 +143,8 @@ individual_share = models.CurrencyField() #全員に分配される金額（合�
 * 慌てない．
 
 ### 3ページ目
-```
-{% extends "global/Page.html" %}
-{% load otree %}
 
+```html
 {% block title %}
     結果の確認
 {% endblock %}
