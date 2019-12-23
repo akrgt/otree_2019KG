@@ -104,10 +104,8 @@ class Group(BaseGroup):
 
 
 ### 1ページ目
-```
-{% extends "global/Page.html" %}
-{% load otree %}
 
+```
 {% block title %}
     説明＆貢献額の決定
 {% endblock %}
@@ -133,9 +131,6 @@ class Group(BaseGroup):
 
 ### 3ページ目
 ```
-{% extends "global/Page.html" %}
-{% load otree %}
-
 {% block title %}
     結果の確認
 {% endblock %}

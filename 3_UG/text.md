@@ -121,9 +121,6 @@ class Group(BaseGroup):
 
 ### 1ページ目
 ```
-{% extends "global/Page.html" %}
-{% load otree static %}
-
 {% block title %}
     説明
 {% endblock %}
@@ -176,9 +173,6 @@ class Group(BaseGroup):
 
 ### 4ページ目
 ```
-{% extends "global/Page.html" %}
-{% load otree static %}
-
 {% block title %}
     分配額の決定
 {% endblock %}
@@ -207,8 +201,7 @@ class Group(BaseGroup):
 
 ### 6ページ目
 ```
-{% extends "global/Page.html" %}
-{% load otree %}
+
 
 {% block title %}
     結果の確認
