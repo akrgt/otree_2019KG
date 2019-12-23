@@ -108,6 +108,7 @@ class Group(BaseGroup):
 
 
 
+
 ## templatesの定義：
 * templatesでは具体的な項目を表示するページに決めていきます．
 
