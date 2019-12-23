@@ -381,7 +381,8 @@ SESSION_CONFIGS = [
 otree devserver
 ```
   - これで自身の端末で実験を実施することができます．
-  - `http://localhost:8000/`にアクセスしてみてください．
+  - [http://localhost:8000/](http://localhost:8000/)にアクセスしてみてください．
+
 
 
 
