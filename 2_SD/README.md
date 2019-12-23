@@ -39,7 +39,7 @@
 * SD4_trialフォルダ内のmodels.pyを開く
 * Constantsクラスの中で人数・繰り返し回数・初期保有額・係数を設定する．
 
-```
+```Python
 class Constants(BaseConstants):
     name_in_url = ‘SD4_trial'
     players_per_group = 4 # 4人プレイヤー
@@ -59,7 +59,7 @@ class Constants(BaseConstants):
 
 * 協力する場合には20ポイント貢献，協力しない場合には0ポイント貢献とする．
 
-```
+```Python
 class Player(BasePlayer):
     contribution = models.CurrencyField(
         choices=[
@@ -78,7 +78,7 @@ class Player(BasePlayer):
 ### Groupクラスの定義
 * Groupクラスの中で全てのプレイヤーの変数に影響を及ぼす関数を定義する．
 
-```
+```Python
 class Group(BaseGroup):
 total_contribution = models.CurrencyField() #全員の合計金額を入れる箱
 individual_share = models.CurrencyField() #全員に分配される金額（合計金額を2倍して人数で割る）を入れる箱
@@ -117,6 +117,8 @@ individual_share = models.CurrencyField() #全員に分配される金額（合�
 ### 1ページ目
 
 ```html
+{% extends "global/Page.html" %}
+{% load otree static %}
 {% block title %}
     説明＆貢献額の決定
 {% endblock %}
@@ -145,6 +147,8 @@ individual_share = models.CurrencyField() #全員に分配される金額（合�
 ### 3ページ目
 
 ```html
+{% extends "global/Page.html" %}
+{% load otree static %}
 {% block title %}
     結果の確認
 {% endblock %}
@@ -197,7 +201,7 @@ individual_share = models.CurrencyField() #全員に分配される金額（合�
   - 入力画面を作ってあげましょう．
 
 
-```
+```Python
 class Page1(Page):
     form_model = 'player'
     form_fields = ['contribution']
@@ -206,7 +210,7 @@ class Page1(Page):
 ### Page.2について
 
 * 全員のデータが集まってから計算する．
-```
+```Python
 class Page2(WaitPage):
 
     def after_all_players_arrive(self):
@@ -221,7 +225,7 @@ class Page2(WaitPage):
 ### Page.3について
 * 実験参加者が入力する項目がない時はpassします．
 
-```
+```Python
 class Page3(Page):
     Pass
 ```
@@ -231,7 +235,7 @@ class Page3(Page):
 
 * **今回はどこもいじりません．**
 * 一番最後に画面を表示する順番を定義します．
-```
+```Python
 page_sequence = [
     Page1,
     Page2,

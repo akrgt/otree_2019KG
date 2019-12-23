@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    結果の確認
+{% endblock %}
+
+{% block content %}
+<p>
+    プレイヤー1に対して初期保有額として<strong> {{ Constants.endowment }}</strong>が渡されました．<br>
+    プレイヤー1はプレイヤー2に対して<strong>{{ group.proposal }}</strong>を渡すことを提案しました．<br>
+    <br>
+    その結果，以下の通りの利得配分となりました．<br>
+    <br>
+    プレイヤー1：{{ group.proposer_point }}<br>
+    プレイヤー2：{{ group.accepter_point }}<br>
+
+    {% next_button %}
+{% endblock %}

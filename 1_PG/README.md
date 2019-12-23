@@ -45,7 +45,7 @@ otree startapp public_goods_trial
 * public_goods_trialフォルダ内のmodels.pyを開く
 * Constantsクラスの中で人数・繰り返し回数・初期保有額・係数を設定する．
 
-```
+```Python
 class Constants(BaseConstants):
     name_in_url = 'public_goods_trial'
     players_per_group = 4 # 4人プレイヤー
@@ -61,7 +61,7 @@ class Constants(BaseConstants):
 ### Playerクラスの定義：
 
 * Playerクラスの中で，各プレイヤーに関する変数を定義する．
-```
+```Python
 class Player(BasePlayer):
     contribution = models.CurrencyField( # 変数"contribution"を定義しよう．
         choices=currency_range(c(0), c(Constants.endowment), c(1)), # 選択肢は最小値0，最大値はConstantsクラスで定義した初期保有額の中で1ずつ変化させることができるようにします．
@@ -76,7 +76,7 @@ class Player(BasePlayer):
 ### Groupクラスの定義
 * Groupクラスの中で全てのプレイヤーの変数に影響を及ぼす関数を定義する．
 
-```
+```Python
 class Group(BaseGroup):
     total_contribution = models.CurrencyField() #全員の合計金額を入れる箱
     individual_share = models.CurrencyField() #全員に分配される金額（合計金額を2倍して人数で割る）を入れる箱
@@ -106,6 +106,8 @@ class Group(BaseGroup):
 ### 1ページ目
 
 ```html
+{% extends "global/Page.html" %}
+{% load otree static %}
 {% block title %}
     説明＆貢献額の決定
 {% endblock %}
@@ -131,6 +133,8 @@ class Group(BaseGroup):
 
 ### 3ページ目
 ```html
+{% extends "global/Page.html" %}
+{% load otree static %}
 {% block title %}
     結果の確認
 {% endblock %}
@@ -174,7 +178,7 @@ class Group(BaseGroup):
   - 入力画面を作ってあげましょう．
 
 
-```
+```Python
 class Page1(Page):
     form_model = 'player'
     form_fields = ['contribution']
@@ -183,7 +187,7 @@ class Page1(Page):
 ### Page.2について
 
 * 全員のデータが集まってから計算する．
-```
+```Python
 class Page2(WaitPage):
 
     def after_all_players_arrive(self):
@@ -198,7 +202,7 @@ class Page2(WaitPage):
 ### Page.3について
 * 実験参加者が入力する項目がない時はpassします．
 
-```
+```Python
 class Page3(Page):
     pass
 ```
@@ -207,7 +211,7 @@ class Page3(Page):
 ### 表示する順番を定義する
 
 * 一番最後に画面を表示する順番を定義します．
-```
+```Python
 page_sequence = [
     Page1,
     Page2,
@@ -223,7 +227,7 @@ page_sequence = [
 
 * oTree で実験を実装するには，`settings.py`の中の`SESSION_CONFIGS`にアプリを登録する必要があります．
 
-```
+```Python
 SESSION_CONFIGS = [
     dict(
         name='PG4',
@@ -237,7 +241,7 @@ SESSION_CONFIGS = [
 
 ## サーバとして起動
 * 自身の端末をサーバとして起動します．
-```
+```Python
 otree devserver
 ```
   - これで自身の端末で実験を実施することができます．

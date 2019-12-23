@@ -1,25 +1,20 @@
-# プログラム③：最終提案ゲーム
+# プログラム④：独裁者ゲーム
 
 ## これから作る実験プログラムの概要：
 
-* 2人最終提案ゲーム
-* 提案者の初期保有額を10ポイント
-* 提案者は0-10ポイントの中から好きな金額を提案できる．
-* 応答者は提案者の提案に対して，**拒否する** か **受け入れる** か
-* 拒否をした場合は（提案者の利得，応答者の利得）＝（0, 0）になるが，受け入れた場合は提案者の提案する分配が実現
-* ページは6ページ
+* 2人独裁者ゲーム
+* 独裁者の初期保有額を10ポイント
+* 独裁者は0-10ポイントの中から好きな金額を提案できる．
+* 応答者は提案者の提案に対して何もできず受け入れるのみ
+* ページは4ページ
   - Page1：ルール説明のページ
     ![Page1](picture/Page1.png) <br><br>
-  - Page2：（提案者のみ）提案額を決定するページ
+  - Page2：（独裁者のみ）提案額を決定するページ
     ![Page2](picture/Page2.png) <br><br>
   - Page3：（応答者のみ）提案者の決定を待つページ
     ![Page3](picture/Page3.png) <br><br>
-  - Page4：（応答者のみ）受け入れるか否かを決定するページ
-    ![Page4](picture/Page4.png) <br><br>
-  - Page5：（提案者のみ）応答者の決定を待つページ
-    ![Page5](picture/Page5.png) <br><br>
-  - Page6：結果を出力するページ
-    ![Page6](picture/Page6.png) <br><br>
+  - Page4：結果を出力するページ
+    ![Page6](picture/Page4.png) <br><br>
 
 
 
@@ -39,7 +34,7 @@
 
 * 土台となるアプリを作成します．
 ```
-otree startapp ultimatum_trial
+otree startapp dictator_trial
 ```
 
 
@@ -48,12 +43,12 @@ otree startapp ultimatum_trial
 
 ### Constantsクラスの定義：基本設計
 
-* ultimatum_trialフォルダ内のmodels.pyを開く
+* dictator_trialフォルダ内のmodels.pyを開く
 * Constantsクラスの中で人数・繰り返し回数・初期保有額・係数を設定する．
 
 ```Python
 class Constants(BaseConstants):
-    name_in_url = 'ultimatum_trial'
+    name_in_url = 'dictator_trial'
     players_per_group = 2 # 2人プレイヤー
     num_rounds = 1 # 1shotゲーム
 
@@ -85,34 +80,24 @@ class Group(BaseGroup):
         choices=currency_range(c(0), c(Constants.endowment), c(1)),
         label="あなたはいくら相手に渡しますか？",
     )
-## プレイヤー2の選択は提案額を受け入れるかどうか．
-    accepted_or_not = models.BooleanField( # BooleanFieldにすることでTRUE/FALSEの選択
-        doc="あなたは提案を受け入れますか？"
-    )
-
     proposer_point = models.CurrencyField() # プレイヤー1の利得
     accepter_point = models.CurrencyField() # プレイヤー2の利得
 
 # 計算を実行する
     def compute(self):
-        if self.accepted_or_not==True: # プレイヤー1が受け入れた場合
-            self.proposer_point = Constants.endowment - self.proposal #プレイヤー1の初期保有額-プレイヤー2への提案額
-            self.accepter_point = self.proposal #プレイヤー2への提案額
-        else: # 拒否した場合
-            self.proposer_point = 0 # 何ももらえません
-            self.accepter_point = 0 # 何ももらえません
+        self.proposer_point = Constants.endowment - self.proposal #プレイヤー1の初期保有額-プレイヤー2への提案額
+        self.accepter_point = self.proposal #プレイヤー2への提案額
 ```
 
 * `def`以下では関数を定義している．
   - 「こんな感じで計算してよう！よろしく＼(^o^)／」ということを定義している．
 
 
-
 ## templatesの定義：
 * templatesでは具体的な項目を表示するページに決めていきます．
 
-* `ultimatum_trial/templates/ultimatum_trial`の中に`Page1.html`，`Page2.html`，`Page4.html`，`Page6.html`という4つのhtmlファイルを作成します．
-  - `Page1`がルール説明ページ，`Page2`が提案者の提案額入力ページ，`Page4`が応答者の受入判断ページ，`Page6`が結果の表示ページとなる．
+* `dictator_trial/templates/dictator_trial`の中に`Page1.html`，`Page2.html`，`Page4.html`という4つのhtmlファイルを作成します．
+  - `Page1`がルール説明ページ，`Page2`が独裁者の提案額入力ページ，`Page4`が結果の表示ページとなる．
   - 待ちページは追って説明する．
 
 
@@ -120,32 +105,34 @@ class Group(BaseGroup):
 ```html
 {% extends "global/Page.html" %}
 {% load otree static %}
+
 {% block title %}
     説明
 {% endblock %}
 {% block content %}
 <p>
-    これは最終提案ゲームです．<br>
+    これは独裁者ゲームです．<br>
     このゲームではプレイヤー1とプレイヤー2にランダムに割り振られます．<br>
     それぞれの役割は以下のとおりです．
 </p>
 <div>
 <strong>プレイヤー1に割り振られた場合</strong>
 <p>
-  あなたは最初{{ Constants.endowment }}を持っています．その中からプレイヤー2にいくら渡すかを決めてもらいます．ただし，プレイヤー2には拒否権があります．プレイヤー2が受け入れた場合にはあなたの提案通りに分配が実行されますが，拒否した場合には2人とも何ももらえません．
+  あなたは最初{{ Constants.endowment }}を持っています．その中からプレイヤー2にいくら渡すかを決めてもらいます．プレイヤー2には拒否権がありません．したがって，あなたの決定通りに分配が行われます．
 </p>
 </div>
 
 <div>
 <strong>プレイヤー2に割り振られた場合</strong>
 <p>
-  あなたはプレイヤー1が提案した分配額に対して，受け入れるか拒否するか決定するように求められます．あなたが受け入れた場合にはプレイヤー1の提案通りに分配が実行されますが，拒否した場合には2人とも何ももらえません．
+  あなたはプレイヤー1の決定どおりにポイントを受け取ります．
 </p>
 </div>
 
     {% next_button %}
 
 {% endblock %}
+
 ```
 
 
@@ -171,39 +158,10 @@ class Group(BaseGroup):
 * 慌てない
 
 ### 4ページ目
-```
-{% extends "global/Page.html" %}
-{% load otree static %}
-{% block title %}
-    分配額の決定
-{% endblock %}
-{% block content %}
-<p>
-    あなたは<strong>プレイヤー2</strong>に割り振られました
-</p>
-<br>
-<p>
-    相手はあなたに{% group.proposal %}を渡すことを提案しました．
-</p>
-
-<div class="form-group required">
-    <label class="control-label">あなたはこの提案を受け入れますか？</label>
-    <div class="controls">
-        <button name="accepted_or_not" value="True" class="btn btn-primary btn-large">はい</button>
-        <button name="accepted_or_not" value="False" class="btn btn-primary btn-large">いいえ</button>
-    </div>
-</div>
-
-{% endblock %}
-```
-
-### 5ページ目
-* 慌てない
-
-### 6ページ目
 ```html
 {% extends "global/Page.html" %}
 {% load otree static %}
+
 {% block title %}
     結果の確認
 {% endblock %}
@@ -212,12 +170,6 @@ class Group(BaseGroup):
 <p>
     プレイヤー1に対して初期保有額として<strong> {{ Constants.endowment }}</strong>が渡されました．<br>
     プレイヤー1はプレイヤー2に対して<strong>{{ group.proposal }}</strong>を渡すことを提案しました．<br>
-    <br>
-    {% if group.accepted_or_not == 0 %}
-    <strong> プレイヤー2は受け入れませんでした．</strong><br>
-    {% else %}
-    <strong> プレイヤー2は受け入れました．</strong><br>
-    {% endif %}
     <br>
     その結果，以下の通りの利得配分となりました．<br>
     <br>
@@ -238,24 +190,18 @@ class Group(BaseGroup):
 
 * `pages.py`で設定する動作
   - `Page1.html`を表示する
-    - 最終提案ゲームのルールを説明する
+    - 独裁者ゲームのルールを説明する
   - `Page2.html`を表示する
-    - プレイヤー1(提案者)にだけ表示する
+    - プレイヤー1(独裁者)にだけ表示する
     - 提案額を入力する
   - `Page3.html`を表示する
     - プレイヤー2(応答者)にだけ表示する
     - プレイヤー1の入力を待つ
   - `Page4.html`を表示する
-    - プレイヤー2(応答者)にだけ表示する
-    - 協力するか否かの判断を入力する
-  - `Page5.html`を表示する
-    - プレイヤー1(提案者)にだけ表示する
-    - プレイヤー2の入力を待つ
-  - `Page6.html`を表示する
     - 各自の利益を表示する．
 
 
-  - `Page1`から`Page6`を順番に表示するように設定する．
+  - `Page1`から`Page4`を順番に表示するように設定する．
 
 ### Page1について
 * `Page1`は何も入力欄の表示や，計算などの特別な動きはありません．
@@ -281,50 +227,21 @@ class Page2(Page):
 ```
 
 ### Page3について
-* Page2に入らなかったプレイヤー（Page2をスキップしたプレイヤー）はPage3に進みます．
-```Python
+* 全てのプレイヤーが`Page3`に入ります．
+  - この中で他のプレイヤーの利得が計算されます．
+```
 class Page3(WaitPage):
-    pass
+  def after_all_players_arrive(self):
+      self.group.compute()
 ```
   - ここでは特に処理すべきことはありません．
 
 ### Page4について
-* `Page4`では受入判断の入力があります．
-  - 60秒の時間制限を設定します．
-  - 入力画面を作ってあげましょう．
-  - 表示されるプレイヤーが限定されます．
 
-```Python
-class Page4(Page):
-  timeout_seconds = 60
-  form_model = 'group'
-  form_fields = ['accepted_or_not']
-
-  def is_displayed(self):
-      return self.player.id_in_group == 2
-```
-
-
-### Page5について
-* Page4に入らなかったプレイヤー（Page4をスキップしたプレイヤー）はPage5に進みます．
-```Python
-class Page5(WaitPage):
-  def after_all_players_arrive(self):
-      self.group.set_payoffs()
-```
-* WaitPage：用意されている「全員集合！」のページを表示する
-* def after_all_players_arrive(self):
-  - 全てのプレイヤーが「全員集合！」のページにたどり着くのを待ってから，それ以降の関数を実行する．
-  - 全員の貢献額の合計＆一人ひとりの利得を計算する．
-
-
-
-
-### Page6について
 * 実験参加者が入力する項目がない時はpassします．
 
 ```Python
-class Page6(Page):
+class Page4(Page):
     pass
 ```
 
@@ -333,18 +250,14 @@ class Page6(Page):
 
 * **今回はどこもいじりません．**
 * 一番最後に画面を表示する順番を定義します．
-```
+```Python
 page_sequence = [
     Page1,
     Page2,
     Page3,
-    Page4,
-    Page5,
-    Page6
+    Page4
 ]
 ```
-
-
 
 
 
@@ -373,8 +286,12 @@ SESSION_CONFIGS = [
         num_demo_participants=2,
         app_sequence=['ultimatum_trial']
     ),
-
-]
+    dict(
+        name='DG',
+        display_name="はじめての独裁者ゲーム",
+        num_demo_participants=2,
+        app_sequence=['dictator_trial']
+    ),]
 ```
 
 

@@ -38,19 +38,19 @@
 
 ### No.1：公共財ゲーム
 
-[コチラ](1_PG/text)
+[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/1_PG)
 
 ### No.2：社会的ジレンマ
 
-[コチラ](2_SD/text)
+[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/2_SD)
 
 ### No.3：最終提案ゲーム
 
-[コチラ](3_UG/text)
+[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/3_UG)
 
 ### No.4：独裁者ゲーム
 
-**Under Construction**
+[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/4_DG)
 
 
 ### No.5：その他補足事項
