@@ -9,17 +9,17 @@
 * 拒否をした場合は（提案者の利得，応答者の利得）＝（0, 0）になるが，受け入れた場合は提案者の提案する分配が実現
 * ページは6ページ
   - Page1：ルール説明のページ
-    ![Page1](picture/Page1.png) <br><br>
+    <img src="picture/Page1.png" alt="Page1" style="zoom:40%;" /> <br><br>
   - Page2：（提案者のみ）提案額を決定するページ
-    ![Page2](picture/Page2.png) <br><br>
+    <img src="picture/Page2.png" alt="Page2" style="zoom:40%;" /> <br><br>
   - Page3：（応答者のみ）提案者の決定を待つページ
-    ![Page3](picture/Page3.png) <br><br>
+    <img src="picture/Page3.png" alt="Page3" style="zoom:40%;" /> <br><br>
   - Page4：（応答者のみ）受け入れるか否かを決定するページ
-    ![Page4](picture/Page4.png) <br><br>
+    <img src="picture/Page4.png" alt="Page4" style="zoom:40%;" /> <br><br>
   - Page5：（提案者のみ）応答者の決定を待つページ
-    ![Page5](picture/Page5.png) <br><br>
+    <img src="picture/Page5.png" alt="Page5" style="zoom:40%;" /> <br><br>
   - Page6：結果を出力するページ
-    ![Page6](picture/Page6.png) <br><br>
+    <img src="picture/Page6.png" alt="Page6" style="zoom:40%;" /> <br><br>
 
 
 

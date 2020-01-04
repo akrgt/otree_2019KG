@@ -1,7 +1,7 @@
-## その他Tips
+その他Tips
 
 ### 日本語にしよう
-* `settings.py`の中で書き換えると行ける．
+* `settings.py`の中で書き換えるといける．
 
 ```
 # ISO-639 code
@@ -25,13 +25,53 @@ USE_POINTS = True
   - oTreeの機能の中で`Rooms`という機能がある．
   - ここにIDを登録することで実行可能．
   - 授業で使う際には学生番号を登録したり．
+  - `Sessions`という機能を用いることもできる
+      - ランダムな文字列URLが発行されるので，実験の際には`Rooms`の方が使い勝手が良い．
+
+
+### 下の変な説明がうざめ．
+* 実際に実験を行う際には`setting.py`の中で下記のコードを記述して，環境変数の中で	`STUDY`に設定すると良いらしい．
+```
+AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
+```
+* しかし，あまりに言うことを聞いてくれないので頭に来たから以下のようにしたら動いたので，これで十分．
+
+```
+AUTH_LEVEL = 'STUDY'
+```
+
+
+
+### ホントはデータベースにはこだわりたい．
+
+* oTreeの開発者いわく，容易に動作検証ができるようにデータベースソフトとして`SQLite`を使っているけどあんまりおすすめしないらしい．
+* 本番の実験を行う時には`PostgreSQL`を使う方が良いとのこと
+    * [We recommend you use PostgreSQL.](https://otree.readthedocs.io/en/latest/server/server-windows.html?highlight=auth_level)
+* `settings.py`に以下のコードを書き足したりして使う．
+    * もちろん，その前に設定が必要
+```
+postgres://postgres@localhost/django_db
+```
+
+* あわせて`psycopg2`というPythonパッケージが必要になる．
+
+  ```
+  pip install -U psycopg2
+  ```
+
+
+
+
 
 
 ### 最近の武器は"intro.js"
 * オンライン実験をする際に，インストラクションを読ませるためには様々な工夫が必要
-  - 今回は紹介しきれなかったが，結構行ける！
+  - 今回は紹介しきれなかったが，結構いける！
   - [intro.js](https://introjs.com/)を使って動的なインストラクションを作成している．
   - 割と悪くない＆oTreeを使った教育的コンテンツの開発には使えるかも．
+  - "intro.js"の有無による行動変化をもう少し分析したい．
+
+
 
 ### もちろん可視化もいける！
 * グラフィカルなフィードバックは教育的にも研究的にも興味深い
@@ -39,6 +79,20 @@ USE_POINTS = True
   - 今回は紹介しきれなかったが，結構行ける！
   - けど，ギリギリのバグがあったりして死にかけてました．泣
 
+
+
 ### PGGで変数を2倍じゃなく3倍とか，自由に変えたい．
 * いくらでも変えられます．
   - 前もってちょっと手を加えればGUI的に変えられたりします．
+- 一番いいのはsetting.pyの**session config**に手を加えるのが一番
+
+<img src="picture/picture1.png" alt="picture1" style="zoom:50%;" />
+
+* `settings.py`での書き方
+
+<img src="picture/picture2.png" alt="picture2" style="zoom:50%;" />
+
+
+
+
+

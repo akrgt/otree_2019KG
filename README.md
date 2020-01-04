@@ -27,13 +27,12 @@
 
   * [Atom](https://atom.io/)
   * [Pycharm](https://www.jetbrains.com/pycharm/)
-
 * 他にもたくさんありますので，お好きなものをご用意ください．
 
 ## 資料
 
 ### No.0：概要
-**Under Construction**
+[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/0_outline)
 
 
 ### No.1：公共財ゲーム
@@ -55,7 +54,7 @@
 
 ### No.5：その他補足事項
 
-**Under Construction**
+[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/5_etc)
 
 
 
@@ -85,10 +84,10 @@
 ## oTree関連の資料
 
 * [oTree](https://www.otree.org/)
+  * [oTreeを使ったときに引用すべき文献](https://www.sciencedirect.com/science/article/pii/S2214635016000101)
 * [公式オンラインマニュアル](https://otree.readthedocs.io/en/latest/)
-
 * [oTreeのオンラインマニュアルを和訳しています．](https://akrgt.gitbook.io/otree-jp/)
-  * 最近少し手が回らずサボリ気味です．修正作業を行っておりますので，見にくい点・わかりにくい点などがあってもお許しください．
+  * 最近少し手が回らずサボリ気味です．修正作業を行っておりますので，見にくい点・わかりにくい点などがあってもお許しください
 
 ## Django関連資料
 

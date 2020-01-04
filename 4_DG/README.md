@@ -8,13 +8,13 @@
 * 応答者は提案者の提案に対して何もできず受け入れるのみ
 * ページは4ページ
   - Page1：ルール説明のページ
-    ![Page1](picture/Page1.png) <br><br>
+    <img src="picture/Page1.png" alt="Page1" style="zoom:40%;" /> <br><br>
   - Page2：（独裁者のみ）提案額を決定するページ
-    ![Page2](picture/Page2.png) <br><br>
+    <img src="picture/Page2.png" alt="Page2" style="zoom:40%;" /> <br><br>
   - Page3：（応答者のみ）提案者の決定を待つページ
-    ![Page3](picture/Page3.png) <br><br>
+    <img src="picture/Page3.png" alt="Page3" style="zoom:40%;" /> <br><br>
   - Page4：結果を出力するページ
-    ![Page6](picture/Page4.png) <br><br>
+    <img src="picture/Page4.png" alt="Page6" style="zoom:40%;" /> <br><br>
 
 
 

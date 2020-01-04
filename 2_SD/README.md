@@ -9,11 +9,11 @@
 * それぞれに貢献額の2倍を人数(4人)で割った額が戻る
 * ページは3ページ
   - Page1：ルール説明＆協力するかしないかを決定するページ
-  ![Page1](picture/Page1.png)<br><br>
+  <img src="picture/Page1.png" alt="Page1" style="zoom:40%;" /><br><br>
   - Page2：全員が協力するかしないか決めるまで待つページ
-  ![Page2](picture/Page2.png)<br><br>
+  <img src="picture/Page2.png" alt="Page2" style="zoom:40%;" /><br><br>
   - Page3：結果を出力するページ
-  ![Page3](picture/Page3.png)<br><br>
+  <img src="picture/Page3.png" alt="Page3" style="zoom:40%;" /><br><br>
 
 
 ## アプリをコピペする
