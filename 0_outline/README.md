@@ -43,6 +43,14 @@ pip install -U otree
   - インストール作業は以上です．
   - 必要に応じて追加のプログラムもインストールされます．
 
+## インストールがうまくいかない場合
+
+1. Pythonのシステムパスは通っていますか？
+   * [コチラ](https://www.javadrive.jp/python/install/index3.html)などを参考に確認してみてください．
+2. Anacondaをインストールされている場合
+   * インストール時に非推奨とされている「**Add Anaconda to the systemPATH environment variable**」にチェックを入れるとPowershellやコマンドプロンプト(Win)，ターミナル(Mac)でそのまま作業できます．
+   * パスを通したくない場合**はAnaconda Navigator**を起動して，**Environment**へ，**base(root)**もしくは自身で用意しているならばそのEnvironmentの中にある**▶**をクリックします．そこで**Open Terminal**をクリックすると作業を進めていくことができます．
+
 ## プロジェクトを作る
 
 * 今回はわかりやすいようにデスクトップでの作業を例とします．

@@ -13,13 +13,15 @@
 
   * [Python](https://www.python.org/)
   * [Anaconda](https://www.anaconda.com/)
-
 * そのままのPythonでもAnacondaでもかまいませんが，インストールをしていらしてください．
-
 * Pathが通っていることを確認しておいてください．
   * 例えば[コチラ](https://www.javadrive.jp/python/install/index3.html)や[コチラ](https://www.sejuku.net/blog/54425)などを参考にしていただけると幸いです．
 
+### Anacondaをインストールされた方へ
 
+インストール時に非推奨とされている「**Add Anaconda to the systemPATH environment variable**」にチェックを入れるとPowershellやコマンドプロンプト(Win)，ターミナル(Mac)でそのまま作業できます．
+
+私はいつもコチラにチェックを入れてパスを通して作業しています．
 
 ## エディタの準備
 
