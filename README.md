@@ -34,29 +34,29 @@
 ## 資料
 
 ### No.0：概要
-[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/0_outline)
 
+* ### [コチラ](https://github.com/akrgt/otree_2019KG/tree/master/0_outline)
 
 ### No.1：公共財ゲーム
 
-[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/1_PG)
+* ### [コチラ](https://github.com/akrgt/otree_2019KG/tree/master/1_PG)
 
 ### No.2：社会的ジレンマ
 
-[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/2_SD)
+* ### [コチラ](https://github.com/akrgt/otree_2019KG/tree/master/2_SD)
 
 ### No.3：最終提案ゲーム
 
-[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/3_UG)
+* ### [コチラ](https://github.com/akrgt/otree_2019KG/tree/master/3_UG)
 
 ### No.4：独裁者ゲーム
 
-[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/4_DG)
+* ### [コチラ](https://github.com/akrgt/otree_2019KG/tree/master/4_DG)
 
 
 ### No.5：その他補足事項
 
-[コチラ](https://github.com/akrgt/otree_2019KG/tree/master/5_etc)
+* ### [コチラ](https://github.com/akrgt/otree_2019KG/tree/master/5_etc)
 
 
 
@@ -74,12 +74,15 @@
 
 ## 後半パートで使うサイト
 
-* [コチラ](http://open.bee-lab.online/demo/)
-  * まだ改修作業を続けている最中ですので，エラーが発生する可能性があります．
+* ### [コチラ](http://open.bee-lab.online/demo/)
+
+* まだ改修作業を続けている最中ですので，エラーが発生する可能性があります．
 
 ## 資料
 
-* 完成次第アップします．
+* ### [コチラ](https://speakerdeck.com/akrgt/20190106di-25hui-kg-rcspsemina-she-hui-de-zirenmashi-yan-puroguramufalsekai-fa-toshi-jian-otreewoyong-ite)
+
+* ただし，随時変更する可能性があります．
 
 # その他
 
