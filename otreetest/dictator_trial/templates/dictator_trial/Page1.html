@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    説明
+{% endblock %}
+{% block content %}
+<p>
+    これは独裁者ゲームです．<br>
+    このゲームではプレイヤー1とプレイヤー2にランダムに割り振られます．<br>
+    それぞれの役割は以下のとおりです．
+</p>
+<div>
+<strong>プレイヤー1に割り振られた場合</strong>
+<p>
+  あなたは最初{{ Constants.endowment }}を持っています．その中からプレイヤー2にいくら渡すかを決めてもらいます．プレイヤー2には拒否権がありません．したがって，あなたの決定通りに分配が行われます．
+</p>
+</div>
+
+<div>
+<strong>プレイヤー2に割り振られた場合</strong>
+<p>
+  あなたはプレイヤー1の決定どおりにポイントを受け取ります．
+</p>
+</div>
+
+    {% next_button %}
+
+{% endblock %}

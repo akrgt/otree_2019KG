@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    分配額の決定
+{% endblock %}
+{% block content %}
+<p>
+    あなたは<strong>プレイヤー1</strong>に割り振られました
+</p>
+{% formfields group.proposal %}
+    {% next_button %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    分配額の決定
+{% endblock %}
+{% block content %}
+<p>
+    あなたは<strong>プレイヤー2</strong>に割り振られました
+</p>
+<br>
+<p>
+    相手はあなたに{{ group.proposal }}を渡すことを提案しました．
+</p>
+
+<div class="form-group required">
+    <label class="control-label">あなたはこの提案を受け入れますか？</label>
+    <div class="controls">
+        <button name="accepted_or_not" value="True" class="btn btn-primary btn-large">はい</button>
+        <button name="accepted_or_not" value="False" class="btn btn-primary btn-large">いいえ</button>
+    </div>
+</div>
+
+{% endblock %}
